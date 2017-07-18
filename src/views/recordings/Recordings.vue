@@ -1,24 +1,15 @@
-<template>
-  <div id="recordings">
-    <div class="loading" v-if="loading">
-      <a class="button is-loading">Loading</a>
-    </div>
-    <router-link v-for="(recording, key) in recordings" :key="key" :to="'/recordings/' + recording.recordingId">
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-16by9">
-            <img v-lazy="'https://appbroker.api.iptv.ch/fb/epg/' + recording.broadcastId + '?tenantId=5'" alt="Image">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            {{recording.title}}
-            <small>{{date(recording.startTime)}}</small>
-          </div>
-        </div>
-      </div>
-    </router-link>
-  </div>
+<template lang="pug">
+  #recordings
+    .loading(v-if="loading")
+      a.button.is-loading Loading
+    router-link(v-for="(recording, key) in recordings" :key="key" :to="'/details/' + recording.broadcastId")
+      .card
+        .card-image
+          figure.image.is-16by9
+            img(v-lazy="'https://appbroker.api.iptv.ch/fb/epg/' + recording.broadcastId + '?tenantId=5'" alt="Image")
+        .card-content
+          .content {{recording.title}}
+            small {{date(recording.startTime)}}
 </template>
 
 <script>
@@ -48,9 +39,7 @@ export default {
 </script>
 
 <style lang="sass">
-#loading
+#recordings
   display: flex
-  align-items: center
-  justify-content: center
-  height: 100%
+  flex-direction: column
 </style>

@@ -1,24 +1,20 @@
-<template>
-  <div id="live">
-    <div class="loading" v-if="loading">
-      <a class="button is-loading">Loading</a>
-    </div>
-    <router-link v-for="(programm, key) in programms" :key="key" :to="'/player/tv/' + programm.channelId">
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-16by9">
-            <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image">
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            {{programm.title}}
-            <small>{{programm.channelId}}</small>
-          </div>
-        </div>
-      </div>
-    </router-link>
-  </div>
+<template lang="pug">
+  #live
+    #channels
+      .select
+        select
+          option Select dropdown
+          option With options
+    .loading(v-if="loading")
+      a.button.is-loading Loading
+    router-link(v-for="(programm, key) in programms" :key="key" :to="'/player/tv/' + programm.channelId")
+      .card
+        .card-image
+          figure.image.is-16by9
+            img(v-lazy="'https://appbroker.api.iptv.ch/fb/epg/' + programm.broadcastId + '?tenantId=5'" alt="Image")
+        .card-content
+          .content {{programm.title}}
+            small {{channels[programm.channelId].name}}
 </template>
 
 <script>
@@ -31,29 +27,48 @@ export default {
   data() {
     return {
       time: moment().format('x'),
+      channels: {},
       programms: [],
       loading: false
     }
   },
   async created() {
     this.loading = true
-    const channels = (await axios.get('ib/auth/tv/channels')).data.map(channel => channel.channelId).join()
+
+    const { data } = await axios.get('ib/auth/tv/channels')
+
+    this.channels = data.reduce((acc, channel) => {
+      acc[channel.channelId] = channel
+      return acc
+    }, {})
+
+    console.log(this.channels)
+
+    const channelsString = data.map(channel => channel.channelId).join()
 
     this.programms = (await axios.get('ib/auth/epg', {
       params: {
         from: this.time,
         to: this.time,
-        channels,
+        channels: channelsString,
         limit: 0,
         runningInBounds: true,
         offset: 0,
         full: false
       }
-    })).data
+    })).data.sort((a, b) => a.channelId - b.channelId)
     this.loading = false
   }
 }
 </script>
 
 <style lang="sass">
+#channels
+  display: flex
+  flex-direction: row
+  justify-content: center
+  width: 100%
+  height: 4em
+  border-bottom: 1px solid lightgrey
+  align-items: center
 </style>
