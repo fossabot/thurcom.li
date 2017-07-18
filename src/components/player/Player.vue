@@ -23,12 +23,17 @@ export default {
   async mounted() {
     this.loading = true
     let url
-    if (this.type === 'recording') {
-      url = (await axios.get('ib/auth/stream/npvr/' + this.id)).data.url
-    }
-    else {
-      const time = moment().subtract(5, 'second').format('X')
-      url = (await axios.get('ib/auth/stream/tv/' + this.id + '?startTime=' + time)).data.url
+    switch (this.type) {
+      case 'recording':
+        url = (await axios.get('ib/auth/stream/npvr/' + this.id)).data.url
+        break
+      case 'live':
+        const time = moment().subtract(5, 'second').format('X')
+        url = (await axios.get('ib/auth/stream/tv/' + this.id + '?startTime=' + time)).data.url
+        break
+      case 'catchup':
+        url = (await axios.get('ib/auth/stream/catchup/' + this.id)).data.url
+        break
     }
 
     const video = this.$refs.video
