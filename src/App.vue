@@ -1,6 +1,6 @@
 <template lang="pug">
   #app
-    router-view
+    router-view.view
     navigation(v-if="navigationShown")
 </template>
 
@@ -33,6 +33,9 @@ html, body
   display: flex
   flex-direction: column
 
+.view
+  height: 100%
+  overflow-y: scroll
 
 .loading
   display: flex
