@@ -4,7 +4,6 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 const Login = () => import('@/views/login/Login.vue')
-const Player = () => import('@/views/player/Player.vue')
 const Guide = () => import('@/views/guide/Guide.vue')
 const Recordings = () => import('@/views/recordings/Recordings.vue')
 const RecordingsDetails = () => import('@/views/recordings/Details.vue')
@@ -16,12 +15,6 @@ const props = true
 const router = new Router({
   routes: [
     { path: '/login', component: Login },
-    {
-      path: '/player/:type/:id',
-      component: Player,
-      meta: { requiresAuth },
-      props
-    },
     { path: '/guide', component: Guide, meta: { requiresAuth } },
     { path: '/recordings', component: Recordings, meta: { requiresAuth } },
     {

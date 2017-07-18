@@ -1,7 +1,9 @@
-<template>
-  <div id="player">
-    <video ref="video" controls=""></video>
-  </div>
+<template lang="pug">
+  figure.player.image.is-16by9
+    .container-16by9
+      .loading(v-if="loading")
+        a.button.is-loading Loading
+      video.video(ref="video" controls="" :style="{opacity: loading ? 0 : 1}")
 </template>
 
 <script>
@@ -13,13 +15,19 @@ const axios = Axios()
 export default {
   name: 'player',
   props: ['id', 'type'],
+  data() {
+    return {
+      loading: false,
+    }
+  },
   async mounted() {
+    this.loading = true
     let url
     if (this.type === 'recording') {
       url = (await axios.get('ib/auth/stream/npvr/' + this.id)).data.url
     }
     else {
-      const time = moment().format('X')
+      const time = moment().subtract(5, 'second').format('X')
       url = (await axios.get('ib/auth/stream/tv/' + this.id + '?startTime=' + time)).data.url
     }
 
@@ -28,6 +36,7 @@ export default {
     hls.loadSource(url)
     hls.attachMedia(video)
     hls.on(Hls.Events.MANIFEST_PARSED, () => {
+      this.loading = false
       video.play()
     })
   }
@@ -35,6 +44,20 @@ export default {
 </script>
 
 <style lang="sass">
-#player
+.player
+  width: 100%
   height: 100%
+
+.container-16by9
+  height: 100%
+  width: 100%
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  top: 0
+
+.video
+  height: 100%
+  width: 100%
 </style>
