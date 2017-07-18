@@ -61,6 +61,4 @@ export default {
 </script>
 
 <style lang="sass">
-#login
-  height: 100%
 </style>

@@ -44,6 +44,4 @@ export default {
 </script>
 
 <style lang="sass">
-#recordings-details
-  height: 100%
 </style>
