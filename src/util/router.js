@@ -23,7 +23,8 @@ const router = new Router({
       meta: { requiresAuth },
       props
     },
-    { path: '/live', component: Live, meta: { requiresAuth } }
+    { path: '/live', component: Live, meta: { requiresAuth } },
+    { path: '*', redirect: '/live' }
   ]
 })
 
