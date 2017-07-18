@@ -7,7 +7,7 @@
       <div class="card">
         <div class="card-image">
           <figure class="image is-16by9">
-            <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image">
+            <img v-lazy="'https://appbroker.api.iptv.ch/fb/epg/' + recording.broadcastId + '?tenantId=5'" alt="Image">
           </figure>
         </div>
         <div class="card-content">
@@ -48,10 +48,6 @@ export default {
 </script>
 
 <style lang="sass">
-#recordings
-  height: 100%
-  overflow-y: scroll
-
 #loading
   display: flex
   align-items: center
