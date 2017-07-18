@@ -21,18 +21,7 @@ export default {
 </script>
 
 <style lang="sass">
-@import "~bulma/sass/utilities/initial-variables"
-@import "~bulma/sass/utilities/variables"
-@import "~bulma/sass/base/helpers"
-@import "~bulma/sass/utilities/mixins"
-@import "~bulma/sass/utilities/controls"
-
-
-@import "~bulma/sass/elements/content"
-@import "~bulma/sass/elements/image"
-@import "~bulma/sass/elements/button"
-
-@import "~bulma/sass/components/card"
+@import "~bulma/bulma"
 
 html, body
   width: 100%
@@ -43,4 +32,11 @@ html, body
   height: 100%
   display: flex
   flex-direction: column
+
+
+.loading
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 100%
 </style>
