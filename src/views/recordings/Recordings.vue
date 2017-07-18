@@ -2,7 +2,7 @@
   #recordings
     .loading(v-if="loading")
       a.button.is-loading Loading
-    router-link(v-for="(recording, key) in recordings" :key="key" :to="'/details/' + recording.broadcastId")
+    router-link(v-for="(recording, key) in recordings" :key="key" :to="'/recordings/' + recording.recordingId")
       .card
         .card-image
           figure.image.is-16by9
