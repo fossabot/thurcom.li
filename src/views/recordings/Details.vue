@@ -13,7 +13,7 @@ const axios = Axios()
 import Player from '@/components/player/Player.vue'
 
 export default {
-  name: 'recordings',
+  name: 'recordings-details',
   props: ['id'],
   data() {
     return {
