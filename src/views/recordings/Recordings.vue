@@ -1,6 +1,6 @@
 <template>
-  <div id="recordings" class="content">
-    <div id="loading" v-if="loading">
+  <div id="recordings">
+    <div class="loading" v-if="loading">
       <a class="button is-loading">Loading</a>
     </div>
     <router-link v-for="(recording, key) in recordings" :key="key" :to="'/recordings/' + recording.recordingId">
@@ -23,7 +23,7 @@
 
 <script>
 import moment from 'moment'
-import Axios from '../../util/axios'
+import Axios from '@/util/axios'
 const axios = Axios()
 
 export default {

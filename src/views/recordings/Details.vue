@@ -1,22 +1,16 @@
-<template>
-  <div id="recordings-details">
-    <div class="content" v-if="recording">
-      <router-link :to="'/player/recording/' + id">
-        <figure class="image is-16by9">
-          <img src="http://bulma.io/images/placeholders/1280x960.png" alt="Image">
-        </figure>
-      </router-link>
-      <h1 class="title">
-        {{recording.title}}
-      </h1>
-    </div>
-  </div>
+<template lang="pug">
+  #recordings-details
+    .content(v-if="recording")
+      player(type="recording" :id="id")
+      h1.title {{recording.title}}
 </template>
 
 <script>
 import moment from 'moment'
 import Axios from '../../util/axios'
 const axios = Axios()
+
+import Player from '@/components/player/Player.vue'
 
 export default {
   name: 'recordings',
@@ -26,6 +20,9 @@ export default {
       recording: null,
       loading: false
     }
+  },
+  components: {
+    Player
   },
   async created() {
     this.loading = true
