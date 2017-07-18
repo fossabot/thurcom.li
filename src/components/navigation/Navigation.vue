@@ -17,10 +17,7 @@
 
 <script>
 export default {
-  name: 'navigation',
-  created() {
-    console.log(this.$route)
-  }
+  name: 'navigation'
 }
 </script>
 
