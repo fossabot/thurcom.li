@@ -20,7 +20,6 @@ export default {
     return {
       recording: null,
       loading: false,
-      peer: new Peer({ key: 'jj13bo4y864aq0k9' })
     }
   },
   components: {
@@ -33,22 +32,11 @@ export default {
       .data
       .filter(recording => recording.recordingId == this.id)[0]
 
-    console.log(this.recording)
-
     this.loading = false
-
-    this.play()
   },
   methods: {
     date(startTime) {
       return moment(startTime).format('DD.MM.YYYY')
-    },
-    play() {
-      const conn = this.peer.connect('server')
-      conn.on('open', async () => {
-        const url = (await axios.get('ib/auth/stream/npvr/' + this.id)).data.url
-        conn.send(url)
-      })
     }
   }
 }
