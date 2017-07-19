@@ -9,6 +9,7 @@
 import moment from 'moment'
 import Axios from '../../util/axios'
 const axios = Axios()
+import vanilla from 'axios'
 
 import Player from '@/components/player/Player.vue'
 
@@ -18,7 +19,8 @@ export default {
   data() {
     return {
       recording: null,
-      loading: false
+      loading: false,
+      peer: new Peer({ key: 'jj13bo4y864aq0k9' })
     }
   },
   components: {
@@ -34,10 +36,19 @@ export default {
     console.log(this.recording)
 
     this.loading = false
+
+    this.play()
   },
   methods: {
     date(startTime) {
       return moment(startTime).format('DD.MM.YYYY')
+    },
+    play() {
+      const conn = this.peer.connect('server')
+      conn.on('open', async () => {
+        const url = (await axios.get('ib/auth/stream/npvr/' + this.id)).data.url
+        conn.send(url)
+      })
     }
   }
 }

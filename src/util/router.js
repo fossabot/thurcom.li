@@ -8,6 +8,7 @@ const Guide = () => import('@/views/guide/Guide.vue')
 const Recordings = () => import('@/views/recordings/Recordings.vue')
 const RecordingsDetails = () => import('@/views/recordings/Details.vue')
 const Live = () => import('@/views/live/Live.vue')
+const Peer = () => import('@/views/peer/Peer.vue')
 
 const requiresAuth = true
 const props = true
@@ -24,6 +25,7 @@ const router = new Router({
       props
     },
     { path: '/live', component: Live, meta: { requiresAuth } },
+    { path: '/peer', component: Peer },
     { path: '*', redirect: '/live' }
   ]
 })
