@@ -1,4 +1,4 @@
-const preactCliTypeScript = require('preact-cli-plugin-typescript');
+import preactCliTypeScript from 'preact-cli-plugin-typescript';
 
 /**
  * Function that mutates original webpack config.

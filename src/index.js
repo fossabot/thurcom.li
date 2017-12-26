@@ -1,3 +1,4 @@
 import './style';
+import App from './containers/App';
 
-export default null;
+export default App;
