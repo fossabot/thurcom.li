@@ -1,12 +1,13 @@
 import { h } from "preact";
 import Router, { subscribers } from "preact-router";
 import AsyncRoute from "preact-async-route";
-import { Provider } from "preact-redux";
+import { Provider } from "react-redux";
 
 import store from "../store";
 import Navbar from "../components/Navbar";
 import Home from "./Home";
 import Login from "./Login";
+import Show from "./Show";
 
 import { IProps as ITestProps } from "./Test";
 interface ITest {
@@ -32,6 +33,7 @@ export default () => (
           <Home path="/" />
           <Login path="/login" />
           <AsyncRoute path="/test" getComponent={Test} />
+          <Show path="/show/:id" id="" />
         </Router>
       </main>
     </div>

@@ -35,8 +35,9 @@
     "preact": "^8.2.6",
     "preact-async-route": "^2.0.1",
     "preact-compat": "^3.17.0",
-    "preact-redux": "^2.0.3",
     "preact-router": "^2.5.7",
+    "react-content-loader": "^1.7.3",
+    "react-redux": "^5.0.6",
     "redux": "^3.7.2"
   }
 }
