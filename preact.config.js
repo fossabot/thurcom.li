@@ -1,7 +1,6 @@
 import criticalCssPlugin from "preact-cli-plugin-critical-css";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import preactCliLodash from "preact-cli-lodash";
-import asyncPlugin from "preact-cli-plugin-async";
 
 /**
  * Function that mutates original webpack config.
@@ -12,12 +11,11 @@ import asyncPlugin from "preact-cli-plugin-async";
  * @param {WebpackConfigHelpers} helpers object with useful helpers when working with config.
  **/
 export default function(config, env, helpers) {
-  // maybe let typescript handle this later
-  asyncPlugin(config);
   preactCliLodash(config);
   criticalCssPlugin(config, env, {});
 
   const { options } = helpers.getLoadersByName(config, "babel-loader")[0].rule;
+  options.plugins.push("transform-regenerator");
 
   config.module.loaders.push({
     enforce: "pre",
