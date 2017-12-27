@@ -1,4 +1,5 @@
-import preactCliTypeScript from 'preact-cli-plugin-typescript';
+import preactCliTypeScript from "preact-cli-plugin-typescript";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 /**
  * Function that mutates original webpack config.
@@ -9,5 +10,6 @@ import preactCliTypeScript from 'preact-cli-plugin-typescript';
  * @param {WebpackConfigHelpers} helpers object with useful helpers when working with config.
  **/
 export default function(config, env, helpers) {
-	preactCliTypeScript(config);
+  preactCliTypeScript(config);
+  env.isProd && env.ssr && config.plugins.push(new BundleAnalyzerPlugin());
 }

@@ -1,29 +1,41 @@
 {
-	"private": true,
-	"name": "thurcom.li",
-	"version": "0.0.0",
-	"license": "MIT",
-	"scripts": {
-		"start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
-		"build": "preact build",
-		"serve": "preact build && preact serve",
-		"dev": "preact watch",
-		"lint": "eslint src"
-	},
-	"eslintConfig": {
-		"extends": "eslint-config-synacor"
-	},
-	"eslintIgnore": ["build/*"],
-	"devDependencies": {
-		"eslint": "^4.9.0",
-		"eslint-config-synacor": "^2.0.2",
-		"if-env": "^1.0.0",
-		"preact-cli": "^2.0.1",
-		"preact-cli-plugin-typescript": "^0.2.2"
-	},
-	"dependencies": {
-		"preact": "^8.2.6",
-		"preact-compat": "^3.17.0",
-		"preact-router": "^2.5.7"
-	}
+  "private": true,
+  "name": "thurcom.li",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
+    "build": "preact build",
+    "serve": "preact build && preact serve",
+    "dev": "preact watch",
+    "lint": "eslint src"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-synacor"
+  },
+  "eslintIgnore": [
+    "build/*"
+  ],
+  "devDependencies": {
+    "@types/hls.js": "^0.7.7",
+    "@types/es6-promise": "0.0.33",
+    "eslint": "^4.9.0",
+    "eslint-config-synacor": "^2.0.2",
+    "if-env": "^1.0.0",
+    "node-sass": "^4.7.2",
+    "preact-cli": "^2.0.1",
+    "preact-cli-plugin-typescript": "^0.2.2",
+    "sass-loader": "^6.0.6",
+    "webpack-bundle-analyzer": "^2.9.1"
+  },
+  "dependencies": {
+    "bulma": "^0.6.1",
+    "hls.js": "^0.8.9",
+    "preact": "^8.2.6",
+    "preact-async-route": "^2.0.1",
+    "preact-compat": "^3.17.0",
+    "preact-redux": "^2.0.3",
+    "preact-router": "^2.5.7",
+    "redux": "^3.7.2"
+  }
 }
