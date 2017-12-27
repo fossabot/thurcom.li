@@ -1,5 +1,6 @@
 import criticalCssPlugin from "preact-cli-plugin-critical-css";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+import preactCliLodash from "preact-cli-lodash";
 
 /**
  * Function that mutates original webpack config.
@@ -10,6 +11,7 @@ import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
  * @param {WebpackConfigHelpers} helpers object with useful helpers when working with config.
  **/
 export default function(config, env, helpers) {
+  preactCliLodash(config);
   criticalCssPlugin(config, env, {});
 
   const { options } = helpers.getLoadersByName(config, "babel-loader")[0].rule;
