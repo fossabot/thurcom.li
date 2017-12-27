@@ -26,6 +26,7 @@
     "node-sass": "^4.7.2",
     "preact-cli": "^2.0.1",
     "preact-cli-lodash": "^1.1.0",
+    "preact-cli-plugin-async": "^1.0.0",
     "preact-cli-plugin-critical-css": "0.0.2",
     "sass-loader": "^6.0.6",
     "typescript": "^2.6.2",

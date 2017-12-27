@@ -1,6 +1,7 @@
 import criticalCssPlugin from "preact-cli-plugin-critical-css";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import preactCliLodash from "preact-cli-lodash";
+import asyncPlugin from "preact-cli-plugin-async";
 
 /**
  * Function that mutates original webpack config.
@@ -11,6 +12,8 @@ import preactCliLodash from "preact-cli-lodash";
  * @param {WebpackConfigHelpers} helpers object with useful helpers when working with config.
  **/
 export default function(config, env, helpers) {
+  // maybe let typescript handle this later
+  asyncPlugin(config);
   preactCliLodash(config);
   criticalCssPlugin(config, env, {});
 
