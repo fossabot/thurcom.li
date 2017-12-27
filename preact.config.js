@@ -1,4 +1,5 @@
 import preactCliTypeScript from "preact-cli-plugin-typescript";
+import criticalCssPlugin from "preact-cli-plugin-critical-css";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 /**
@@ -11,5 +12,6 @@ import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
  **/
 export default function(config, env, helpers) {
   preactCliTypeScript(config);
+  criticalCssPlugin(config, env, {});
   env.isProd && env.ssr && config.plugins.push(new BundleAnalyzerPlugin());
 }

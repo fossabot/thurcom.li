@@ -17,13 +17,14 @@
     "build/*"
   ],
   "devDependencies": {
-    "@types/hls.js": "^0.7.7",
     "@types/es6-promise": "0.0.33",
+    "@types/hls.js": "^0.7.7",
     "eslint": "^4.9.0",
     "eslint-config-synacor": "^2.0.2",
     "if-env": "^1.0.0",
     "node-sass": "^4.7.2",
     "preact-cli": "^2.0.1",
+    "preact-cli-plugin-critical-css": "0.0.2",
     "preact-cli-plugin-typescript": "^0.2.2",
     "sass-loader": "^6.0.6",
     "webpack-bundle-analyzer": "^2.9.1"

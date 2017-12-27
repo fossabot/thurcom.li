@@ -27,11 +27,13 @@ export default () => (
   <Provider store={store}>
     <div>
       <Navbar />
-      <Router>
-        <Home path="/" />
-        <Login path="/login" />
-        <AsyncRoute path="/test" getComponent={Test} />
-      </Router>
+      <main>
+        <Router>
+          <Home path="/" />
+          <Login path="/login" />
+          <AsyncRoute path="/test" getComponent={Test} />
+        </Router>
+      </main>
     </div>
   </Provider>
 );
