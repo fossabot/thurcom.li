@@ -13,20 +13,18 @@
   "eslintConfig": {
     "extends": "eslint-config-synacor"
   },
-  "eslintIgnore": [
-    "build/*"
-  ],
+  "eslintIgnore": ["build/*"],
   "devDependencies": {
-    "@types/es6-promise": "0.0.33",
     "@types/hls.js": "^0.7.7",
+    "awesome-typescript-loader": "^3.4.1",
     "eslint": "^4.9.0",
     "eslint-config-synacor": "^2.0.2",
     "if-env": "^1.0.0",
     "node-sass": "^4.7.2",
     "preact-cli": "^2.0.1",
     "preact-cli-plugin-critical-css": "0.0.2",
-    "preact-cli-plugin-typescript": "^0.2.2",
     "sass-loader": "^6.0.6",
+    "typescript": "^2.6.2",
     "webpack-bundle-analyzer": "^2.9.1"
   },
   "dependencies": {
@@ -35,9 +33,8 @@
     "preact": "^8.2.6",
     "preact-async-route": "^2.0.1",
     "preact-compat": "^3.17.0",
+    "preact-redux": "^2.0.3",
     "preact-router": "^2.5.7",
-    "react-content-loader": "^1.7.3",
-    "react-redux": "^5.0.6",
     "redux": "^3.7.2"
   }
 }

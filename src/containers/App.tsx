@@ -1,7 +1,7 @@
 import { h } from "preact";
 import Router, { subscribers } from "preact-router";
 import AsyncRoute from "preact-async-route";
-import { Provider } from "react-redux";
+import { Provider } from "preact-redux";
 
 import store from "../store";
 import Navbar from "../components/Navbar";

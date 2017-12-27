@@ -1,4 +1,3 @@
-import preactCliTypeScript from "preact-cli-plugin-typescript";
 import criticalCssPlugin from "preact-cli-plugin-critical-css";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
@@ -11,7 +10,19 @@ import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
  * @param {WebpackConfigHelpers} helpers object with useful helpers when working with config.
  **/
 export default function(config, env, helpers) {
-  preactCliTypeScript(config);
   criticalCssPlugin(config, env, {});
+
+  const { options } = helpers.getLoadersByName(config, "babel-loader")[0].rule;
+
+  config.module.loaders.push({
+    enforce: "pre",
+    test: /\.tsx?$/,
+    loader: "awesome-typescript-loader",
+    options: {
+      useBabel: true,
+      babelOptions: options
+    }
+  });
+
   env.isProd && env.ssr && config.plugins.push(new BundleAnalyzerPlugin());
 }
