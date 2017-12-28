@@ -1,3 +1,8 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import createSagaMiddleware, { SagaMiddleware } from "redux-saga";
 
-export default createStore(Object);
+import reducers from "./reducers";
+
+const sagaMiddleware: SagaMiddleware<{}> = createSagaMiddleware();
+
+export default createStore(reducers, applyMiddleware(sagaMiddleware));
