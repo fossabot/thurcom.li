@@ -32,8 +32,13 @@ export default function(config, env, helpers) {
 
   config.resolve.alias["preact-cli-entrypoint"] = env.source("index");
 
-  if (env.ssr) {
-    config.entry["ssr-bundle"] = env.source("index");
-    config.plugins.push(new BundleAnalyzerPlugin());
+  if (env.isProd && !env.ssr) {
+    config.plugins.push(
+      new BundleAnalyzerPlugin({
+        analyzerMode: "static",
+        reportFilename: "../report.html"
+      })
+    );
   }
+  env.ssr && (config.entry["ssr-bundle"] = env.source("index"));
 }
