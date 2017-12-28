@@ -13,11 +13,12 @@
   "eslintConfig": {
     "extends": "eslint-config-synacor"
   },
-  "eslintIgnore": ["build/*"],
+  "eslintIgnore": [
+    "build/*"
+  ],
   "devDependencies": {
     "@types/hls.js": "^0.7.7",
     "@types/lodash": "^4.14.91",
-    "awesome-typescript-loader": "^3.4.1",
     "babel-plugin-transform-regenerator": "^6.26.0",
     "eslint": "^4.9.0",
     "eslint-config-synacor": "^2.0.2",
@@ -29,6 +30,7 @@
     "preact-cli-plugin-critical-css": "0.0.2",
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
+    "ts-loader": "^3.2.0",
     "tslint": "^5.8.0",
     "tslint-loader": "^3.5.3",
     "typescript": "^2.6.2",

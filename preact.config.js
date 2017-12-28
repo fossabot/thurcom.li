@@ -19,22 +19,18 @@ export default function(config, env, helpers) {
   options.plugins.push("transform-regenerator");
 
   config.module.loaders.push({
-    enforce: "pre",
     test: /\.tsx?$/,
-    loader: "awesome-typescript-loader",
-    options: {
-      useBabel: true,
-      babelOptions: options
-    }
+    use: [
+      {
+        loader: "babel-loader",
+        options
+      },
+      "ts-loader",
+      "tslint-loader"
+    ]
   });
-  config.resolve.alias["preact-cli-entrypoint"] = env.source("index");
 
-  config.module.loaders.push({
-    enforce: "pre",
-    test: /\.tsx?$/,
-    loader: "tslint-loader",
-    options: {}
-  });
+  config.resolve.alias["preact-cli-entrypoint"] = env.source("index");
 
   if (env.ssr) {
     config.entry["ssr-bundle"] = env.source("index");
