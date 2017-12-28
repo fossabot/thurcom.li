@@ -4,11 +4,8 @@ interface IProps {
   path: string;
   id: string;
 }
+type TShow = (props: IProps) => JSX.Element;
 
-interface IShow {
-  (props: IProps): JSX.Element;
-}
-
-const Show: IShow = ({ id }) => <div>{id}</div>;
+const Show: TShow = ({ id }) => <div>{id}</div>;
 
 export default Show;

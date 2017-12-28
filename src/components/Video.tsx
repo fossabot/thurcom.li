@@ -4,13 +4,11 @@ import * as HLS from "hls.js";
 interface IProps {
   url: string;
 }
+type TLoadView = (video: HTMLVideoElement) => void;
+type TVideo = (props: IProps) => JSX.Element;
 
-interface ILoadView {
-  (video: HTMLVideoElement): void;
-}
-
-export default ({ url }: IProps) => {
-  const loadVideo: ILoadView = video => {
+const Video: TVideo = ({ url }) => {
+  const loadVideo: TLoadView = video => {
     if (!HLS.isSupported()) {
       return;
     }
@@ -23,3 +21,5 @@ export default ({ url }: IProps) => {
 
   return <video ref={loadVideo} controls />;
 };
+
+export default Video;

@@ -8,23 +8,20 @@ import Navbar from "../components/Navbar";
 import Home from "./Home";
 import Login from "./Login";
 import Show from "./Show";
-
 import { IProps as ITestProps } from "./Test";
-interface ITest {
-  (): Promise<(module: ITestProps) => JSX.Element>;
-}
-const Test: ITest = () => import("./Test").then(module => module.default);
 
-interface IIsLoggedIn {
-  (url: string): void;
-}
-const isLoggedIn: IIsLoggedIn = url => {
+type TTest = () => Promise<(module: ITestProps) => JSX.Element>;
+type TIsLoggedIn = (url: string) => void;
+type TApp = () => JSX.Element;
+
+const Test: TTest = () => import("./Test").then(module => module.default);
+
+const isLoggedIn: TIsLoggedIn = url => {
   console.log(url);
 };
-
 subscribers.push(isLoggedIn);
 
-export default () => (
+const App: TApp = () => (
   <Provider store={store}>
     <div>
       <Navbar />
@@ -39,3 +36,5 @@ export default () => (
     </div>
   </Provider>
 );
+
+export default App;

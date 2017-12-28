@@ -6,11 +6,14 @@ import Video from "../components/Video";
 export interface IProps {
   path: string;
 }
+type TTest = (props: IProps) => JSX.Element;
 
-export default (props: IProps) => (
+const Test: TTest = props => (
   <div class="content">
     <h1>Test</h1>
     <Link href="/">Home</Link>
     <Video url="https://video-dev.github.io/streams/x36xhzz/x36xhzz.m3u8" />
   </div>
 );
+
+export default Test;

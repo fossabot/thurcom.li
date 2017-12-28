@@ -1,7 +1,9 @@
 import { h } from "preact";
 import { Link } from "preact-router";
 
-export default () => (
+type TNavbar = () => JSX.Element;
+
+const Navbar: TNavbar = () => (
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <Link class="navbar-item" activeClassName="is-active" href="/">
@@ -23,3 +25,5 @@ export default () => (
     </div>
   </nav>
 );
+
+export default Navbar;

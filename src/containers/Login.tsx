@@ -6,7 +6,6 @@ interface IProps {
   isLoading: boolean;
   error?: string;
 }
-
 type ILogin = (props: IProps) => JSX.Element;
 
 const Login: ILogin = ({ isLoading, error }) => (
