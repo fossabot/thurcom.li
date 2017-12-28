@@ -9,3 +9,9 @@ export const enum AuthActions {
   RECEIVE_AUTH,
   ERROR_AUTH
 }
+
+export const enum GuideActions {
+  REQUEST_GUIDE,
+  RECEIVE_GUIDE,
+  ERROR_GUIDE
+}
