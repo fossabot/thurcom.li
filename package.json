@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
-    "build": "preact build",
+    "build": "preact build && rimraf ./build/ssr-build",
     "serve": "preact build && preact serve",
     "dev": "preact watch",
     "lint": "eslint src"
@@ -13,9 +13,7 @@
   "eslintConfig": {
     "extends": "eslint-config-synacor"
   },
-  "eslintIgnore": [
-    "build/*"
-  ],
+  "eslintIgnore": ["build/*"],
   "devDependencies": {
     "@types/hls.js": "^0.7.7",
     "@types/lodash": "^4.14.91",
@@ -29,6 +27,7 @@
     "preact-cli-lodash": "^1.1.0",
     "preact-cli-plugin-async": "^1.0.0",
     "preact-cli-plugin-critical-css": "0.0.2",
+    "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
     "tslint": "^5.8.0",
     "tslint-loader": "^3.5.3",

@@ -1,6 +1,7 @@
 import criticalCssPlugin from "preact-cli-plugin-critical-css";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import preactCliLodash from "preact-cli-lodash";
+import { resolve } from "path";
 
 /**
  * Function that mutates original webpack config.
@@ -26,6 +27,7 @@ export default function(config, env, helpers) {
       babelOptions: options
     }
   });
+  config.resolve.alias["preact-cli-entrypoint"] = env.source("index");
 
   config.module.loaders.push({
     enforce: "pre",
@@ -34,5 +36,8 @@ export default function(config, env, helpers) {
     options: {}
   });
 
-  env.isProd && env.ssr && config.plugins.push(new BundleAnalyzerPlugin());
+  if (env.ssr) {
+    config.entry["ssr-bundle"] = env.source("index");
+    config.plugins.push(new BundleAnalyzerPlugin());
+  }
 }
