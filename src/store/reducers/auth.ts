@@ -1,19 +1,22 @@
 import { Reducer } from "./index";
 import { AuthActions } from "../actions";
 
-type TState = Readonly<{
+export type TAuthState = Readonly<{
   email: string;
   isLoading: boolean;
   error: string;
 }>;
 
-const initialState: TState = {
+const initialState: TAuthState = {
   email: "",
   isLoading: false,
   error: ""
 };
 
-const auth: Reducer<TState, AuthActions> = (state = initialState, action) => {
+const auth: Reducer<TAuthState, AuthActions> = (
+  state = initialState,
+  action
+) => {
   switch (action.type) {
     case AuthActions.RECEIVE_AUTH:
       return { email: action.email, isLoading: false, error: "" };

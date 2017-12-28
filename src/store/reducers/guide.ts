@@ -1,24 +1,24 @@
 import { Reducer } from "./index";
 import { GuideActions } from "../actions";
 
-interface IGuideShow {
+export interface IGuideShow {
   title: string;
   start: number;
   end: number;
 }
 
-type TGuideChanel = Readonly<{
+export type TGuideChanel = Readonly<{
   data: ReadonlyArray<IGuideShow>;
   title: string;
 }>;
 
-type TState = Readonly<{
+export type TGuideState = Readonly<{
   data: ReadonlyArray<TGuideChanel>;
   isLoading: boolean;
   error: string;
 }>;
 
-const initialState: TState = {
+const initialState: TGuideState = {
   data: [
     {
       title: "SRF",
@@ -32,7 +32,10 @@ const initialState: TState = {
   error: ""
 };
 
-const guide: Reducer<TState, GuideActions> = (state = initialState, action) => {
+const guide: Reducer<TGuideState, GuideActions> = (
+  state = initialState,
+  action
+) => {
   switch (action.type) {
     case GuideActions.REQUEST_GUIDE:
       return { ...state, isLoading: true };

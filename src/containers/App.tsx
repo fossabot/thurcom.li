@@ -8,6 +8,7 @@ import Navbar from "../components/Navbar";
 import Home from "./Home";
 import Login from "./Login";
 import Show from "./Show";
+import Guide from "./Guide";
 import { IProps as ITestProps } from "./Test";
 
 type TTest = () => Promise<(module: ITestProps) => JSX.Element>;
@@ -31,6 +32,7 @@ const App: TApp = () => (
           <Login path="/login" />
           <AsyncRoute path="/test" getComponent={Test} />
           <Show path="/show/:id" id="" />
+          <Guide path="/guide" />
         </Router>
       </main>
     </div>
