@@ -30,6 +30,8 @@
     "preact-cli-plugin-async": "^1.0.0",
     "preact-cli-plugin-critical-css": "0.0.2",
     "sass-loader": "^6.0.6",
+    "tslint": "^5.8.0",
+    "tslint-loader": "^3.5.3",
     "typescript": "^2.6.2",
     "webpack-bundle-analyzer": "^2.9.1"
   },

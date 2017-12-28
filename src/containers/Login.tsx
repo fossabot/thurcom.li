@@ -7,14 +7,12 @@ interface IProps {
   error?: string;
 }
 
-interface ILogin {
-  (props: IProps): JSX.Element;
-}
+type ILogin = (props: IProps) => JSX.Element;
 
 const Login: ILogin = ({ isLoading, error }) => (
   <div class="columns">
     <div class="column is-4-tablet is-offset-4-tablet is-2-desktop is-offset-5-desktop">
-      {error && <p class="is-danger">error</p>}
+      {error && <p class="is-danger">{error}</p>}
       <div class="field">
         <label class="label" for="email">
           Email

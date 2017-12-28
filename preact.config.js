@@ -27,5 +27,12 @@ export default function(config, env, helpers) {
     }
   });
 
+  config.module.loaders.push({
+    enforce: "pre",
+    test: /\.tsx?$/,
+    loader: "tslint-loader",
+    options: {}
+  });
+
   env.isProd && env.ssr && config.plugins.push(new BundleAnalyzerPlugin());
 }

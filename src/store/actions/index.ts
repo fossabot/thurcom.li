@@ -6,5 +6,6 @@ export interface IEnumAction<T> extends AnyAction {
 
 export const enum AuthActions {
   REQUEST_AUTH,
-  RECEIVE_AUTH
+  RECEIVE_AUTH,
+  ERROR_AUTH
 }

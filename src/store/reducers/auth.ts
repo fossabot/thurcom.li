@@ -19,6 +19,8 @@ const auth: Reducer<State, AuthActions> = (state = initialState, action) => {
       return { email: action.email, isLoading: false, error: "" };
     case AuthActions.REQUEST_AUTH:
       return { ...state, isLoading: true };
+    case AuthActions.ERROR_AUTH:
+      return { ...state, isLoading: false, error: action.error };
   }
 };
 
