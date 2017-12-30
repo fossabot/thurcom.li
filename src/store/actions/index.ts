@@ -5,13 +5,13 @@ export interface IEnumAction<T> extends AnyAction {
 }
 
 export const enum AuthActions {
-  REQUEST_AUTH,
-  RECEIVE_AUTH,
-  ERROR_AUTH
+  REQUEST_AUTH = "REQUEST_AUTH",
+  RECEIVE_AUTH = "RECEIVE_AUTH",
+  ERROR_AUTH = "ERROR_AUTH"
 }
 
 export const enum GuideActions {
-  REQUEST_GUIDE,
-  RECEIVE_GUIDE,
-  ERROR_GUIDE
+  REQUEST_GUIDE = "REQUEST_GUIDE",
+  RECEIVE_GUIDE = "RECEIVE_GUIDE",
+  ERROR_GUIDE = "ERROR_GUIDE"
 }

@@ -1,7 +1,8 @@
-import { all, call, AllEffect } from "redux-saga/effects";
+import { all, call, GenericAllEffect, ForkEffect } from "redux-saga/effects";
 
-function* sagas(): IterableIterator<AllEffect> {
-  yield all([]);
+import watchFetchLogin from "./auth";
+
+// todo: better type definition
+export default function* sagas(): IterableIterator<GenericAllEffect<IterableIterator<ForkEffect>>> {
+  yield all([watchFetchLogin()]);
 }
-
-export default sagas;

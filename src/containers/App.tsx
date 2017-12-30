@@ -9,13 +9,13 @@ import Home from "./Home";
 import Login from "./Login";
 import Show from "./Show";
 import Guide from "./Guide";
-import { IProps as ITestProps } from "./Test";
+import { TTest } from "./Test";
 
-type TTest = () => Promise<(module: ITestProps) => JSX.Element>;
+type TTestAsync = () => Promise<TTest>;
 type TIsLoggedIn = (url: string) => void;
 type TApp = () => JSX.Element;
 
-const Test: TTest = () => import("./Test").then(module => module.default);
+const Test: TTestAsync = () => import("./Test").then(module => module.default);
 
 const isLoggedIn: TIsLoggedIn = url => {
   console.log(url);
