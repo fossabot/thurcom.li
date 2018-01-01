@@ -2,8 +2,9 @@ import { h } from "preact";
 import Router, { subscribers } from "preact-router";
 import AsyncRoute from "preact-async-route";
 import { Provider } from "preact-redux";
+import { PersistGate } from "redux-persist/es/integration/react";
 
-import store from "../store";
+import store, { persistor } from "../store";
 import Navbar from "../components/Navbar";
 import Home from "./Home";
 import Login from "./Login";
@@ -24,18 +25,20 @@ subscribers.push(isLoggedIn);
 
 const App: TApp = () => (
   <Provider store={store}>
-    <div>
-      <Navbar />
-      <main>
-        <Router>
-          <Home path="/" />
-          <Login path="/login" />
-          <AsyncRoute path="/test" getComponent={Test} />
-          <Show path="/show/:id" id="" />
-          <Guide path="/guide" />
-        </Router>
-      </main>
-    </div>
+    <PersistGate persistor={persistor} >
+      <div>
+        <Navbar />
+        <main>
+          <Router>
+            <Home path="/" />
+            <Login path="/login" />
+            <AsyncRoute path="/test" getComponent={Test} />
+            <Show path="/show/:id" id="" />
+            <Guide path="/guide" />
+          </Router>
+        </main>
+      </div>
+    </PersistGate>
   </Provider>
 );
 

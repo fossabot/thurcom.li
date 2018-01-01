@@ -22,13 +22,18 @@ const api: TApi = (url, { headers = {}, method = "get", ...rest }) => fetch(base
 
 
 // todo: better type annotation
-function* fetchLogin({ email, password }: any): IterableIterator<CallEffect | PutEffect<{ type: AuthActions, error: string }>> {
+function* fetchLogin({ email, password }: any): IterableIterator<PutEffect<any> | CallEffect> {
     try {
         const res: IAuthResponse = yield call(api, "ib/public/accounts/login", {
             headers: {
                 Authorization: "Basic " + btoa(email + ":" + password)
             },
             method: "post"
+        });
+        yield put({
+            type: AuthActions.RECEIVE_AUTH,
+            authToken: res.authToken,
+            pairingToken: res.pairingToken
         });
         console.log(res);
     } catch (error) {

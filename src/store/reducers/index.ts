@@ -1,5 +1,3 @@
-import { combineReducers } from "redux";
-
 import { IEnumAction } from "../actions";
 import auth, { TAuthState } from "./auth";
 import guide, { TGuideState } from "./guide";
@@ -10,7 +8,7 @@ export interface IRootState {
   guide: TGuideState;
 }
 
-export default combineReducers<IRootState>({
+export default {
   auth,
   guide
-});
+};

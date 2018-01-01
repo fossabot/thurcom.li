@@ -20,10 +20,7 @@ class Login extends Component<IProps, IState> {
     email: "",
     password: ""
   };
-  onEmailChange = ({ target }) => {
-    this.setState({ email: target.value });
-    console.log(target.value);
-  }
+  onEmailChange = ({ target }) => this.setState({ email: target.value });
   onPasswordChange = ({ target }) => this.setState({ password: target.value });
   render(): JSX.Element {
     const { error, isLoading, clickLogin } = this.props;
@@ -65,7 +62,7 @@ const mapStateToProps: TMapStateToProps = ({ auth }: IRootState) => ({
 
 // todo: better types
 type TMapDispatchToProps = (dispatch: Function) => Partial<IProps>;
-const mapDispatchToProps: TMapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps: TMapDispatchToProps = dispatch => ({
   clickLogin: (email, password) => dispatch({
     type: AuthActions.REQUEST_AUTH,
     email,

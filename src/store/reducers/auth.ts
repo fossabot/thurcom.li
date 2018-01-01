@@ -2,13 +2,15 @@ import { Reducer } from "./index";
 import { AuthActions } from "../actions";
 
 export type TAuthState = Readonly<{
-  email: string;
+  authToken: string;
+  pairingToken: string;
   isLoading: boolean;
   error: string;
 }>;
 
 const initialState: TAuthState = {
-  email: "",
+  authToken: "",
+  pairingToken: "",
   isLoading: false,
   error: ""
 };
@@ -19,7 +21,7 @@ const auth: Reducer<TAuthState, AuthActions> = (
 ) => {
   switch (action.type) {
     case AuthActions.RECEIVE_AUTH:
-      return { email: action.email, isLoading: false, error: "" };
+      return { authToken: action.authToken, pairingToken: action.pairingToken, isLoading: false, error: "" };
     case AuthActions.REQUEST_AUTH:
       return { ...state, isLoading: true };
     case AuthActions.ERROR_AUTH:
