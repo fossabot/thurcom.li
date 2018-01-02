@@ -16,6 +16,8 @@ export default function (config, env, helpers) {
   criticalCssPlugin(config, env, {});
 
   const { options } = helpers.getLoadersByName(config, "babel-loader")[0].rule;
+  // todo: look at configuration options, runtime
+  options.plugins.push("fast-async");
 
   config.module.loaders.push({
     test: /\.tsx?$/,

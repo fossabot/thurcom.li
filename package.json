@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "bulma": "^0.6.1",
+    "fast-async": "^6.3.0",
     "hls.js": "^0.8.9",
     "preact": "^8.2.6",
     "preact-async-route": "^2.0.1",
@@ -45,6 +46,7 @@
     "preact-router": "^2.5.7",
     "redux": "^3.7.2",
     "redux-persist": "^5.4.0",
+    "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1"
   }
 }
