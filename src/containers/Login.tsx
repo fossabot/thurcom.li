@@ -2,7 +2,7 @@ import { h, Component } from "preact";
 import { connect, MapStateToPropsParam } from "preact-redux";
 
 import { IRootState } from "../store/reducers/index";
-import { AuthActions } from "../store/actions";
+import { authActions } from "../store/actions";
 
 interface IProps {
   path: string;
@@ -63,11 +63,7 @@ const mapStateToProps: TMapStateToProps = ({ auth }: IRootState) => ({
 // todo: better types
 type TMapDispatchToProps = (dispatch: Function) => Partial<IProps>;
 const mapDispatchToProps: TMapDispatchToProps = dispatch => ({
-  clickLogin: (email, password) => dispatch({
-    type: AuthActions.REQUEST_AUTH,
-    email,
-    password
-  })
+  clickLogin: (email, password) => dispatch(authActions.requestAuth(email, password))
 });
 
 

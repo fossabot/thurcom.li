@@ -1,5 +1,4 @@
-import { Reducer } from "./index";
-import { GuideActions } from "../actions";
+import { Reducer } from "redux";
 
 export interface IGuideShow {
   title: string;
@@ -32,12 +31,12 @@ const initialState: TGuideState = {
   error: ""
 };
 
-const guide: Reducer<TGuideState, GuideActions> = (
+const guide: Reducer<TGuideState> = (
   state = initialState,
   action
 ) => {
   switch (action.type) {
-    case GuideActions.REQUEST_GUIDE:
+    case "REQUEST_GUIDE":
       return { ...state, isLoading: true };
     default:
       return state;

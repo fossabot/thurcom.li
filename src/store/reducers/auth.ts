@@ -1,5 +1,7 @@
-import { Reducer } from "./index";
-import { AuthActions } from "../actions";
+import { getType } from "typesafe-actions";
+import { Reducer } from "redux";
+
+import { authActions } from "../actions";
 
 export type TAuthState = Readonly<{
   authToken: string;
@@ -15,17 +17,18 @@ const initialState: TAuthState = {
   error: ""
 };
 
-const auth: Reducer<TAuthState, AuthActions> = (
+const auth: Reducer<TAuthState> = (
   state = initialState,
   action
 ) => {
-  switch (action.type) {
-    case AuthActions.RECEIVE_AUTH:
-      return { authToken: action.authToken, pairingToken: action.pairingToken, isLoading: false, error: "" };
-    case AuthActions.REQUEST_AUTH:
+  const { payload, type } = action;
+  switch (type) {
+    case getType(authActions.receiveAuth):
+      return { authToken: payload.authToken, pairingToken: payload.pairingToken, isLoading: false, error: "" };
+    case getType(authActions.requestAuth):
       return { ...state, isLoading: true };
-    case AuthActions.ERROR_AUTH:
-      return { ...state, isLoading: false, error: action.error };
+    case getType(authActions.errorAuth):
+      return { ...state, isLoading: false, error: payload };
     default:
       return state;
   }

@@ -1,17 +1,26 @@
 import { AnyAction } from "redux";
+import { createAction } from "typesafe-actions";
 
-export interface IEnumAction<T> extends AnyAction {
-  type: T;
-}
+import auth from "../reducers/auth";
 
-export const enum AuthActions {
-  REQUEST_AUTH = "REQUEST_AUTH",
-  RECEIVE_AUTH = "RECEIVE_AUTH",
-  ERROR_AUTH = "ERROR_AUTH"
-}
-
-export const enum GuideActions {
-  REQUEST_GUIDE = "REQUEST_GUIDE",
-  RECEIVE_GUIDE = "RECEIVE_GUIDE",
-  ERROR_GUIDE = "ERROR_GUIDE"
-}
+// tslint:disable-next-line typedef
+export const authActions = {
+  requestAuth: createAction("REQUEST_AUTH", (email: string, password: string) => ({
+    type: "REQUEST_AUTH",
+    payload: {
+      email,
+      password
+    }
+  })),
+  receiveAuth: createAction("RECEIVE_AUTH", (authToken: string, pairingToken: string) => ({
+    type: "RECEIVE_AUTH",
+    payload: {
+      authToken,
+      pairingToken
+    }
+  })),
+  errorAuth: createAction("ERROR_AUTH", error => ({
+    type: "ERROR_AUTH",
+    payload: error
+  }))
+};
