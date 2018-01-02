@@ -11,12 +11,11 @@ import { resolve } from "path";
  * @param {object} env options passed to CLI.
  * @param {WebpackConfigHelpers} helpers object with useful helpers when working with config.
  **/
-export default function(config, env, helpers) {
+export default function (config, env, helpers) {
   preactCliLodash(config);
   criticalCssPlugin(config, env, {});
 
   const { options } = helpers.getLoadersByName(config, "babel-loader")[0].rule;
-  options.plugins.push("transform-regenerator");
 
   config.module.loaders.push({
     test: /\.tsx?$/,
