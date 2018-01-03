@@ -2,6 +2,7 @@ import criticalCssPlugin from "preact-cli-plugin-critical-css";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import preactCliLodash from "preact-cli-lodash";
 import { resolve } from "path";
+import asyncPlugin from "preact-cli-plugin-async";
 
 /**
  * Function that mutates original webpack config.
@@ -11,13 +12,12 @@ import { resolve } from "path";
  * @param {object} env options passed to CLI.
  * @param {WebpackConfigHelpers} helpers object with useful helpers when working with config.
  **/
-export default function (config, env, helpers) {
+export default function(config, env, helpers) {
   preactCliLodash(config);
   criticalCssPlugin(config, env, {});
+  asyncPlugin(config);
 
   const { options } = helpers.getLoadersByName(config, "babel-loader")[0].rule;
-  // todo: look at configuration options, runtime
-  options.plugins.push("fast-async");
 
   config.module.loaders.push({
     test: /\.tsx?$/,

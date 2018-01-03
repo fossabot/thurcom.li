@@ -1,9 +1,7 @@
-import { h } from "preact";
+import { h, FunctionalComponent } from "preact";
 import { Link } from "preact-router";
 
-type TNavbar = () => JSX.Element;
-
-const Navbar: TNavbar = () => (
+const Navbar: FunctionalComponent<null> = () => (
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <Link class="navbar-item" activeClassName="is-active" href="/">

@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, FunctionalComponent } from "preact";
 
 import style from "./show.sass";
 import { IGuideShow } from "../store/reducers/guide";
@@ -6,11 +6,10 @@ import { IGuideShow } from "../store/reducers/guide";
 interface IProps {
   data: IGuideShow;
 }
-type TShow = (props: IProps) => JSX.Element;
 
 const scale: number = 20;
 
-const Show: TShow = ({ data }) => {
+const Show: FunctionalComponent<IProps> = ({ data }) => {
   const position: any = {
     width: (data.end - data.start) * scale,
     left: data.start * scale

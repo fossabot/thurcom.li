@@ -1,13 +1,12 @@
-import { h, Component } from "preact";
+import { h, Component, FunctionalComponent } from "preact";
 import * as HLS from "hls.js";
 
 interface IProps {
   url: string;
 }
 type TLoadView = (video: HTMLVideoElement) => void;
-type TVideo = (props: IProps) => JSX.Element;
 
-const Video: TVideo = ({ url }) => {
+const Video: FunctionalComponent<IProps> = ({ url }) => {
   const loadVideo: TLoadView = video => {
     if (!HLS.isSupported()) {
       return;

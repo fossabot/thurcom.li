@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, FunctionalComponent } from "preact";
 import { connect } from "preact-redux";
 import { map } from "lodash";
 
@@ -12,8 +12,7 @@ interface IProps {
   chanels: ReadonlyArray<TGuideChanel>;
 }
 
-type TGuide = (props: IProps) => JSX.Element;
-const Guide: TGuide = ({ chanels: [chanel] }) => {
+const Guide: FunctionalComponent<IProps> = ({ chanels: [chanel] }) => {
   const shows: JSX.Element[] = map(chanel.data, data => <Show data={data} />);
   const { start } = chanel.data[0];
   const position: any = {

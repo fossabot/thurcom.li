@@ -1,4 +1,4 @@
-import { h } from "preact";
+import { h, FunctionalComponent } from "preact";
 import Router, { subscribers } from "preact-router";
 import AsyncRoute from "preact-async-route";
 import { Provider } from "preact-redux";
@@ -10,22 +10,15 @@ import Home from "./Home";
 import Login from "./Login";
 import Show from "./Show";
 import Guide from "./Guide";
-import { TTest } from "./Test";
+import { IProps as ITestProps } from "./Test";
 
-type TTestAsync = () => Promise<TTest>;
-type TIsLoggedIn = (url: string) => void;
-type TApp = () => JSX.Element;
+type TTestAsync = () => Promise<FunctionalComponent<ITestProps>>;
 
 const Test: TTestAsync = () => import("./Test").then(module => module.default);
 
-const isLoggedIn: TIsLoggedIn = url => {
-  console.log(url);
-};
-subscribers.push(isLoggedIn);
-
-const App: TApp = () => (
+const App: FunctionalComponent<null> = () => (
   <Provider store={store}>
-    <PersistGate persistor={persistor} >
+    <PersistGate persistor={persistor}>
       <div>
         <Navbar />
         <main>
