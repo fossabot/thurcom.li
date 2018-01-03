@@ -7,6 +7,7 @@ declare module "typesafe-actions" {
     AC extends (...args: any[]) => FluxStandardAction<T>
   >(typeString: T, creatorFunction?: AC): AC & TypeGetter<T>;
 
+  // todo: better typing
   export function createAction<
     T extends string,
     AC extends (...args: any[]) => ThunkAction<any, any, any>
