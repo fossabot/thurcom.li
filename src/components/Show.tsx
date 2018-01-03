@@ -1,6 +1,6 @@
 import { h, FunctionalComponent } from "preact";
 
-import style from "./show.sass";
+import * as style from "./show.sass";
 import { IGuideShow } from "../store/reducers/guide";
 
 interface IProps {

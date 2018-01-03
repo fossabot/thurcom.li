@@ -12,7 +12,7 @@ import asyncPlugin from "preact-cli-plugin-async";
  * @param {object} env options passed to CLI.
  * @param {WebpackConfigHelpers} helpers object with useful helpers when working with config.
  **/
-export default function(config, env, helpers) {
+export default function (config, env, helpers) {
   preactCliLodash(config);
   criticalCssPlugin(config, env, {});
   asyncPlugin(config);
@@ -32,6 +32,10 @@ export default function(config, env, helpers) {
   });
 
   config.resolve.alias["preact-cli-entrypoint"] = env.source("index");
+
+  const cssLoader = helpers.getLoadersByName(config, "css-loader")[0].loader;
+  cssLoader.loader = "typings-for-css-modules-loader";
+  cssLoader.options.namedExport = true;
 
   if (env.isProd && !env.ssr) {
     config.plugins.push(

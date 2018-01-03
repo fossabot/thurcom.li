@@ -2,3 +2,6 @@ node_modules
 /build
 /*.log
 report.html
+
+# Get autogeneratet by typings-for-css-modules-loader
+*.sass.d.ts
