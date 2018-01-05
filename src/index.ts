@@ -7,7 +7,6 @@ import store from "./store";
 type TIsLoggedIn = (url: string) => void;
 
 const isLoggedIn: TIsLoggedIn = url => {
-  console.log(url);
   if (url === "/" || url === "/login") {
     return;
   }
