@@ -1,25 +1,22 @@
-import { AnyAction } from 'redux';
-import { createAction, getType } from 'typesafe-actions';
+import { AnyAction, Dispatch } from "redux";
+import { createAction, getType } from "typesafe-actions";
 
-import auth from '../reducers/auth';
-import Api from '../../util/api';
-import store from '../index';
-
-console.log(store);
-const api = new Api(store);
+import Api, { ILoginResponse, ICountryResponse } from "../../util/api";
+import { IRootState } from "../reducers/index";
 
 // tslint:disable-next-line typedef
 export const requestAuth = createAction(
-	'REQUEST_AUTH',
-	(email: string, password: string) => async dispatch => {
-		console.log('test');
+	"REQUEST_AUTH",
+	(email: string, password: string) => async (dispatch: Dispatch<IRootState>, getState: () => IRootState) => {
 		dispatch({ type: getType(requestAuth) });
+		const api: Api = new Api(getState);
 		try {
-			const { authToken, pairingToken } = await api.login(email, password);
+			const loginRequest: Promise<ILoginResponse> = api.login(email, password);
+			const countryCheckRequest: Promise<ICountryResponse> = api.countryCheck();
+			const [loginResponse, countryCheckResponse] = await Promise.all([loginRequest, countryCheckRequest]);
+			const { authToken, pairingToken } = loginResponse;
 			dispatch(receiveAuth(authToken, pairingToken));
 		} catch (error) {
-			console.log(error);
-			console.log('error');
 			dispatch(errorAuth(error));
 		}
 	}
@@ -27,9 +24,9 @@ export const requestAuth = createAction(
 
 // tslint:disable-next-line typedef
 export const receiveAuth = createAction(
-	'RECEIVE_AUTH',
+	"RECEIVE_AUTH",
 	(authToken: string, pairingToken: string) => ({
-		type: 'RECEIVE_AUTH',
+		type: "RECEIVE_AUTH",
 		payload: {
 			authToken,
 			pairingToken
@@ -38,7 +35,7 @@ export const receiveAuth = createAction(
 );
 
 // tslint:disable-next-line typedef
-export const errorAuth = createAction('ERROR_AUTH', error => ({
-	type: 'ERROR_AUTH',
+export const errorAuth = createAction("ERROR_AUTH", error => ({
+	type: "ERROR_AUTH",
 	payload: error
 }));
