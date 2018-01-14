@@ -1,15 +1,22 @@
 import { h, FunctionalComponent } from "preact";
 
 interface IProps extends JSX.HTMLAttributes {
-    children: any;
     isLoading: boolean;
 }
 
-const LoadingButton: FunctionalComponent<IProps> = ({ children, isLoading, className, ...rest }) => isLoading
-    ? <button className={"button is-primary is-loading" + className}>Loading</button>
+const LoadingButton: FunctionalComponent<IProps> = ({ children, isLoading, className, onClick, ...rest }) => isLoading
+    ? (
+        <button
+            className={"button is-primary is-loading" + className}
+            {...rest}
+        >
+            Loading
+        </button>
+    )
     : (
         <button
             className={"button is-primary" + className}
+            onClick={onClick}
             {...rest}
         >
             {children}

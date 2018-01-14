@@ -1,14 +1,17 @@
 import { h, Component } from "preact";
 import { connect, MapStateToPropsParam } from "preact-redux";
+import { route } from "preact-router";
 
 import { IRootState } from "../../store/reducers/index";
 import { requestAuth } from "../../store/actions/auth";
+import LoadingButton from "../../components/loadingButton";
 
 interface IProps {
   path: string;
   isLoading: boolean;
   error: string;
   clickLogin: any;
+  authToken: string;
 }
 interface IState {
   email: string;
@@ -20,6 +23,12 @@ class Login extends Component<IProps, IState> {
     email: "",
     password: ""
   };
+  constructor(props: IProps) {
+    super(props);
+    if (props.authToken) {
+      // route("/");
+    }
+  }
   onEmailChange = ({ target }) => this.setState({ email: target.value });
   onPasswordChange = ({ target }) => this.setState({ password: target.value });
   render(): JSX.Element {
@@ -57,16 +66,7 @@ class Login extends Component<IProps, IState> {
               />
             </div>
           </div>
-          {isLoading ? (
-            <button class="button is-primary is-loading">Loading</button>
-          ) : (
-              <button
-                class="button is-primary"
-                onClick={() => clickLogin(email, password)}
-              >
-                Login
-            </button>
-            )}
+          <LoadingButton isLoading={isLoading} onClick={() => clickLogin(email, password)}>Login</LoadingButton>
         </div>
       </div>
     );
@@ -76,7 +76,8 @@ class Login extends Component<IProps, IState> {
 type TMapStateToProps = (state: IRootState) => Partial<IProps>;
 const mapStateToProps: TMapStateToProps = ({ auth }: IRootState) => ({
   isLoading: auth.isLoading,
-  error: auth.error
+  error: auth.error,
+  authToken: auth.authToken
 });
 
 // todo: better types
