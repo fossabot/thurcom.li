@@ -1,7 +1,7 @@
 import { h, FunctionalComponent } from "preact";
 import { Link } from "preact-router";
 
-import Video from "../components/Video";
+import Video from "../../components/video";
 
 export interface IProps {
   path: string;

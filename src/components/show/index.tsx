@@ -1,7 +1,7 @@
 import { h, FunctionalComponent } from "preact";
 
-import * as style from "./show.sass";
-import { IGuideShow } from "../store/reducers/guide";
+import * as style from "./style.sass";
+import { IGuideShow } from "../../store/reducers/guide";
 
 interface IProps {
   data: IGuideShow;

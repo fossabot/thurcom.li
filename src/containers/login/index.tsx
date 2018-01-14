@@ -1,8 +1,8 @@
 import { h, Component } from "preact";
 import { connect, MapStateToPropsParam } from "preact-redux";
 
-import { IRootState } from "../store/reducers/index";
-import { requestAuth } from "../store/actions/auth";
+import { IRootState } from "../../store/reducers/index";
+import { requestAuth } from "../../store/actions/auth";
 
 interface IProps {
   path: string;
@@ -60,13 +60,13 @@ class Login extends Component<IProps, IState> {
           {isLoading ? (
             <button class="button is-primary is-loading">Loading</button>
           ) : (
-            <button
-              class="button is-primary"
-              onClick={() => clickLogin(email, password)}
-            >
-              Login
+              <button
+                class="button is-primary"
+                onClick={() => clickLogin(email, password)}
+              >
+                Login
             </button>
-          )}
+            )}
         </div>
       </div>
     );

@@ -2,10 +2,10 @@ import { h, FunctionalComponent } from "preact";
 import { connect } from "preact-redux";
 import { map } from "lodash";
 
-import "./guide.sass";
-import { IRootState } from "../store/reducers";
-import { TGuideChanel, IGuideShow } from "../store/reducers/guide";
-import Show from "../components/Show";
+import "./style.sass";
+import { IRootState } from "../../store/reducers";
+import { TGuideChanel, IGuideShow } from "../../store/reducers/guide";
+import Show from "../../components/show";
 
 interface IProps {
   path: string;

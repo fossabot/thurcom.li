@@ -5,11 +5,11 @@ import { Provider } from "preact-redux";
 import { PersistGate } from "redux-persist/es/integration/react";
 
 import store, { persistor } from "../store";
-import Navbar from "../components/Navbar";
-import Home from "./Home";
-import Login from "./Login";
-import Show from "./Show";
-import Guide from "./Guide";
+import Navbar from "../components/navbar";
+import Home from "./home";
+import Login from "./login";
+import Show from "./show";
+import Guide from "./guide";
 import { IProps as ITestProps } from "./Test";
 
 type TTestAsync = () => Promise<FunctionalComponent<ITestProps>>;
