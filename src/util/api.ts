@@ -41,12 +41,12 @@ export type IChannelResponse = ReadonlyArray<{
 class Api {
     static readonly baseUrl: string = "https://cors-anywhere.herokuapp.com/https://appbroker.api.iptv.ch/";
     constructor(private getState: () => IRootState) { }
-    request<T>(
+    async request<T>(
         url: string,
         { headers = {}, ...rest }: IApiRequestInit = {}
     ): Promise<T> {
         const { authToken, pairingToken } = this.getState().auth;
-        return fetch(Api.baseUrl + url, {
+        const res: Response = await fetch(Api.baseUrl + url, {
             headers: new Headers({
                 tenantId: 5,
                 authToken,
@@ -54,7 +54,12 @@ class Api {
                 ...headers
             }),
             ...rest
-        }).then(res => res.json());
+        });
+        const json: Promise<T> = await res.json();
+        if (!res.ok) {
+            throw json;
+        }
+        return json;
     }
 
     static readonly loginUrl: string = "ib/public/accounts/login";
@@ -70,7 +75,12 @@ class Api {
     static readonly countryCheckUrl: string = "ib/public/countryCheck";
     // todo: include correct error handling if allowed is false and test it
     countryCheck(): Promise<ICountryResponse> {
-        return this.request(Api.countryCheckUrl);
+        return this.request<ICountryResponse>(Api.countryCheckUrl).then(res => {
+            if (!res.allowed) {
+                throw res;
+            }
+            return res;
+        });
     }
 
     static readonly channelsUrl: string = "ib/auth/tv/channels";

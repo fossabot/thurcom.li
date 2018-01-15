@@ -18,19 +18,18 @@ const initialState: TAuthState = {
 };
 
 const auth: Reducer<TAuthState> = (state = initialState, action) => {
-  const { payload, type } = action;
-  switch (type) {
+  switch (action.type) {
     case getType(receiveAuth):
       return {
-        authToken: payload.authToken,
-        pairingToken: payload.pairingToken,
+        authToken: action.payload.authToken,
+        pairingToken: action.payload.pairingToken,
         isLoading: false,
         error: ""
       };
     case getType(requestAuth):
       return { ...state, isLoading: true };
     case getType(errorAuth):
-      return { ...state, isLoading: false, error: payload };
+      return { ...state, isLoading: false, error: action.payload };
     default:
       return state;
   }
