@@ -1,5 +1,7 @@
 # thurcom.li
 
+![Build Status](https://circleci.com/gh/conblem/thurcom.li.png?style=shield)
+
 ## CLI Commands
 
 ```bash
