@@ -1,8 +1,8 @@
 # thurcom.li
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/conblem/thurcom.li.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/conblem/thurcom.li.svg?style=shield)](https://greenkeeper.io/)
 
-![Build Status](https://circleci.com/gh/conblem/thurcom.li.png?style=shield)
+![Build Status](https://circleci.com/gh/conblem/thurcom.li.svg?style=shield)
 
 ## CLI Commands
 
