@@ -19,3 +19,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn greenkeeper
       - run: yarn test
+      - store_artifacts:
+          path: cypress/videos
+      - store_artifacts:
+          path: cypress/screenshots
