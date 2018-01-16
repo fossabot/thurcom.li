@@ -1,12 +1,14 @@
+import "whatwg-fetch";
 import { getType } from "typesafe-actions";
 import configureMockStore, { MockStoreCreator, MockStore } from "redux-mock-store";
 import thunk from "redux-thunk";
 import * as fetchMock from "fetch-mock";
+import { expect } from "chai";
 
-import { errorAuth, receiveAuth, requestAuth } from "../../../src/store/actions/auth";
-import { IRootState } from "../../../src/store/reducers/";
+import { errorAuth, receiveAuth, requestAuth } from "../../../../src/store/actions/auth";
+import { IRootState } from "../../../../src/store/reducers/";
 import { FluxStandardAction } from "typesafe-actions";
-import Api from "../../../src/util/api";
+import Api from "../../../../src/util/api";
 
 const mockStore: MockStoreCreator<Partial<IRootState>> = configureMockStore([thunk]);
 
@@ -50,7 +52,7 @@ describe("auth actions", () => {
         ];
 
         return store.dispatch(requestAuth("test@test.com", "hunter2")).then(() => {
-            expect(store.getActions()).toEqual(expected);
+            expect(store.getActions()).to.deep.equal(expected);
         });
     });
 
@@ -74,7 +76,7 @@ describe("auth actions", () => {
         ];
 
         return store.dispatch(requestAuth("test@test.com", "wrongpassword")).then(() => {
-            expect(store.getActions()).toEqual(expected);
+            expect(store.getActions()).to.deep.equal(expected);
         });
 
     });

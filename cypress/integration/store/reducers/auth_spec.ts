@@ -1,7 +1,8 @@
 import { getType } from "typesafe-actions";
+import { expect } from "chai";
 
-import auth, { TAuthState } from "../../../src/store/reducers/auth";
-import { errorAuth, requestAuth, receiveAuth } from "../../../src/store/actions/auth";
+import auth, { TAuthState } from "../../../../src/store/reducers/auth";
+import { errorAuth, requestAuth, receiveAuth } from "../../../../src/store/actions/auth";
 
 describe("auth reducer", () => {
     it("errorAuth action", () => {
@@ -17,7 +18,7 @@ describe("auth reducer", () => {
             payload: "Test"
         });
 
-        expect(actual).toEqual(expected);
+        expect(actual).to.deep.equal(expected);
     });
 
     it("requestAuth action", () => {
@@ -32,7 +33,7 @@ describe("auth reducer", () => {
             type: getType(requestAuth),
         });
 
-        expect(actual).toEqual(expected);
+        expect(actual).to.deep.equal(expected);
     });
 
     it("receiveAuth action", () => {
@@ -51,6 +52,6 @@ describe("auth reducer", () => {
             }
         });
 
-        expect(actual).toEqual(expected);
+        expect(actual).to.deep.equal(expected);
     });
 });
