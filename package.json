@@ -41,7 +41,7 @@
   ],
   "devDependencies": {
     "@types/fetch-mock": "^5.12.2",
-    "@types/hls.js": "^0.7.7",
+    "@types/hls.js": "^0.8.0",
     "@types/jest": "^22.0.1",
     "@types/lodash": "^4.14.91",
     "@types/redux-mock-store": "^0.0.13",
