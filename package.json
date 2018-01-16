@@ -9,7 +9,8 @@
     "serve": "preact build && preact serve",
     "dev": "preact watch",
     "lint": "eslint src",
-    "test": "jest"
+    "test": "jest",
+    "greenkeeper": "greenkeeper-lockfile-update && greenkeeper-lockfile-upload"
   },
   "jest": {
     "setupFiles": [
@@ -47,6 +48,7 @@
     "eslint": "^4.9.0",
     "eslint-config-synacor": "^2.0.2",
     "fetch-mock": "^6.0.0-beta.7",
+    "greenkeeper-lockfile": "^1.12.0",
     "if-env": "^1.0.0",
     "jest": "^22.1.1",
     "node-sass": "^4.7.2",
